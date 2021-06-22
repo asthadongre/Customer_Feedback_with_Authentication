@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class='form'>
+    <div class="container" align="center" >
+        <nav class="mt-4 bg-warning">
+            <h3 style="font-family: Arial, Helvetica, sans-serif;">Please tell us about your experience </h3>
+        </nav>
+        
+    <form  method="POST" action="" >
+        
+        {% csrf_token %}
+
+        {{ form.as_p }}
+    
+    <input type="submit">
+
+    </form>
+</div>
+</div>
+
+{% endblock %}

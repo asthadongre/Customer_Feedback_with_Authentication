@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/home" style="font-size: large ; font-family: cursive;"><i>Welcome To our Feedback Page</i></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/feedbackform" style="font-size: large ; font-family: cursive;">Feedback  </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/overview" style="font-size: large ; font-family: cursive;">Overview</a>
+              </li>
+             
+
+                      {% if user.is_authenticated %}
+                        
+                     
+                        
+                        <li style="font-size: large ; font-family: cursive; background-color: yellow;">Hello,{{user.first_name}} feel free to give feedback!!</li>
+
+
+                        <a class="nav-link active" aria-current="page" href="/logout">logout</a>
+                        {% else %}
+                
+
+                     
+                      <li style=" margin-left: 150px; margin-top: 7px ; background-color: yellow; ">Please Login/Register </li>
+
+                      <a class="nav-link active" href="/login"> Log in</a>
+                      
+                      <a class="nav-link active" href="/register">Register</a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </ul>
+              </li>
+             
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+
+
+      <div class="mt-4 container" align='center'>
+        <div class="row">
+    
+        {% for i in all_product %}
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <h6>{{i.name}}</h6>
+                    <img src="/static/images/{{i.image}}" class="card-img-top" alt="...">
+                    
+                    <br>
+                    
+                    
+                </div>
+                
+              
+               
+                
+            </div>
+        {% endfor %}
+            
+      </div>
+    </div>    
+
+{% endblock %}

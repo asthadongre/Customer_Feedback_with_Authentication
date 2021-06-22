@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="header--buttons">
+       
+
+    <a href="/home"><span class="p-3 mb-2 bg-info text-white">Home Page</span></a>
+ 
+
+</div>
+
+    <div class="container" align="center">
+        
+            <table class="table table-striped">
+                <thead class="table-warning" >
+                <th>Customer Name</th>
+                <th>Product</th>
+                <th>Happy</th>
+                <th>Date</th>
+                </thead>
+                {% csrf_token %}
+                {% for i in all_feedback %}
+                <tr class="table table-success table-striped" >
+                <td>{{i.customer_name}}</td>
+                <td>{{i.product}}</td>
+                <td>
+                {% if i.happy == True %} yes {% else %} no {% endif %} </td>
+                <td>{{i.date}}</td>
+
+
+
+                </tr>
+                {% endfor %}
+
+            </table>
+
+    <a href="/feedbackform" class="btn-outline-success">Add another Feedback </a><br>
+    
+</div>
+<a href="/feedbackform" class="btn-outline-success">Add another Feedback </a><br>
+{% endblock %}
